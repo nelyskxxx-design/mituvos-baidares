@@ -1,0 +1,14 @@
+node_modules/
+temporary screenshots/
+.DS_Store
+.claude/
+.vscode/
+screenshot*.mjs
+ig-capture.mjs
+ig-hover-capture.mjs
+nav-capture.mjs
+serve.mjs
+package.json
+package-lock.json
+CLAUDE.md
+test-logo.html
