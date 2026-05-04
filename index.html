@@ -1,10 +1,35 @@
 <!DOCTYPE html>
 <html lang="lt">
 <head>
+  <script>
+    if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
+    window.addEventListener('beforeunload', () => { window.scrollTo(0, 0); });
+    window.addEventListener('load', () => { window.scrollTo(0, 0); });
+  </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Mituvos Baidarės — baidarių nuoma ir glamping stovyklavietė Jurbarko rajone, ant Mituvos upės kranto. Plaukimo maršrutai, kubilas, tyla." />
   <title>Mituvos Baidarės — Baidarių nuoma ir glamping prie Mituvos upės</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="brand_assets/logo.png" />
+  <link rel="apple-touch-icon" href="brand_assets/logo.png" />
+
+  <!-- Open Graph -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:site_name"   content="Mituvos Baidarės" />
+  <meta property="og:url"         content="https://nelyskxxx-design.github.io/mituvos-baidares/" />
+  <meta property="og:title"       content="Mituvos Baidarės — Baidarių nuoma ir glamping prie Mituvos upės" />
+  <meta property="og:description" content="Baidarių nuoma, glamping stovyklavietė iki 17 žmonių, kubilas ir rami gamta prie Mituvos upės Jurbarko rajone." />
+  <meta property="og:image"       content="https://nelyskxxx-design.github.io/mituvos-baidares/media/neportretines/109296313_3251669148232808_325983631809691230_n.jpg" />
+  <meta property="og:image:alt"   content="Mituvos Baidarės — gamta prie upės" />
+  <meta property="og:locale"      content="lt_LT" />
+
+  <!-- Twitter/X card -->
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:title"       content="Mituvos Baidarės — Baidarių nuoma ir glamping" />
+  <meta name="twitter:description" content="Baidarių nuoma, glamping iki 17 žmonių, kubilas ir rami gamta prie Mituvos upės." />
+  <meta name="twitter:image"       content="https://nelyskxxx-design.github.io/mituvos-baidares/media/neportretines/109296313_3251669148232808_325983631809691230_n.jpg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -978,7 +1003,7 @@
     </p>
     <h1>Ramus poilsis<br /><em>prie Mituvos upės</em></h1>
     <p class="hero-sub">
-      Pabėk nuo miesto. Tik tu, vanduo ir gamta — baidarės, glamping, kubilas, laužas.
+      Pabėk nuo miesto. Tik tu, vanduo ir gamta — baidarės, glamping, kubilas.
     </p>
     <div class="hero-pills" aria-label="Siūlomos paslaugos">
       <span class="pill">🛶 Baidarių nuoma</span>
@@ -1148,7 +1173,6 @@
   <div class="section-inner">
     <div class="glamping-grid">
       <div class="glamp-visual reveal">
-        <!-- Placeholder — savininkė pakeis sava nuotrauka -->
         <img src="./media/atrinkta/glamping_03.jpg" alt="Glamping stovyklavietė Mituvos Baidarės" loading="lazy" />
         <div class="glamp-badge">
           <div class="glamp-badge-num">17</div>
@@ -1385,7 +1409,7 @@
   <div class="footer-grid">
     <div>
       <div class="footer-logo">
-        <img src="brand_assets/logo.png" alt="Mituvos Baidarės" />
+        <img src="brand_assets/logo.png" alt="Mituvos Baidarės" loading="lazy" />
       </div>
       <p class="footer-tagline">Ramus poilsis be skubėjimo —<br />tik tu, vanduo ir gamta.</p>
       <div class="footer-social" aria-label="Socialiniai tinklai">
@@ -1574,11 +1598,12 @@
     pTimer = setInterval(() => goTo(pCurrent + 1), 5000);
   });
 
-  // touch swipe
+  // touch swipe (pause auto-advance while touching)
   let tStartX = 0, tStartY = 0;
   stageEl.addEventListener('touchstart', e => {
     tStartX = e.touches[0].clientX;
     tStartY = e.touches[0].clientY;
+    clearInterval(pTimer);
   }, { passive: true });
   stageEl.addEventListener('touchend', e => {
     const dx = e.changedTouches[0].clientX - tStartX;
@@ -1586,6 +1611,7 @@
     if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) {
       goTo(pCurrent + (dx < 0 ? 1 : -1));
     }
+    pTimer = setInterval(() => goTo(pCurrent + 1), 5000);
   });
 
   // init: center first slide after layout
