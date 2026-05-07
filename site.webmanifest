@@ -1,0 +1,13 @@
+{
+  "name": "Mituvos Baidarės",
+  "short_name": "Mituvos Baidarės",
+  "description": "Baidarių nuoma ir glamping prie Mituvos upės",
+  "icons": [
+    { "src": "/favicon-192x192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/favicon-512x512.png", "sizes": "512x512", "type": "image/png" }
+  ],
+  "theme_color": "#1a4030",
+  "background_color": "#f8fdf5",
+  "display": "standalone",
+  "lang": "lt"
+}
